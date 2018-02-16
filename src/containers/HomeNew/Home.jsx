@@ -15,10 +15,9 @@ import { validateInput } from '../../reducers/form';
 
 @connect((state) => {
   return {
-    testCall: state.form.checkInputCall,
-    testCallSuccess: state.form.checkInputSuccess,
-	  testCallFail: state.form.checkInputFail,
-	  count: state.counter.count
+    testCall: state.form.testCall,
+    testCallSuccess: state.form.testCallSuccess,
+    testCallFail: state.form.testCallFail
   };
  },{
   validateInput
@@ -171,8 +170,6 @@ export default class Home extends Component {
   }
 
   render() {
-
-    console.log(styles)
     
     const { validateInput, testCallSuccess, testCall, testCallFail } = this.props;
 
