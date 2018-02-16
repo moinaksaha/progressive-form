@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { FormGroup, Radio, ControlLabel } from 'react-bootstrap'
+// import { FormGroup, Radio, ControlLabel } from 'react-bootstrap'
 
 import styles from '../../containers/Home/Home.css';
 

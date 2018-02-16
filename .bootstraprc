@@ -56,7 +56,7 @@ styles:
   # Reset and dependencies
   normalize: true
   print: false
-  glyphicons: false
+  glyphicons: true
 
   # Core CSS
   scaffolding: true
@@ -94,7 +94,7 @@ styles:
   modals: true
   tooltip: false
   popovers: false
-  carousel: true
+  carousel: false
 
   # Utility classes
   utilities: true

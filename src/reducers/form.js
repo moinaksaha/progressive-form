@@ -1,4 +1,4 @@
-import { checkIt } from '../utils/api';
+import { checkIt, submitIt } from '../utils/api';
 
 export const CHECK_INPUT_CALL = 'form/CHECK_INPUT_CALL'
 export const CHECK_INPUT_SUCCESS = 'form/CHECK_INPUT_SUCCESS'
@@ -8,9 +8,7 @@ export const SUBMIT_FORM_CALL = 'form/SUBMIT_FORM_CALL'
 export const SUBMIT_FORM_SUCCESS = 'form/SUBMIT_FORM_SUCCESS'
 export const SUBMIT_FORM_FAIL = 'form/SUBMIT_FORM_FAIL'
 
-export const INCREMENT = 'form/INCREMENT'
-export const DECREMENT_REQUESTED = 'form/DECREMENT_REQUESTED'
-export const DECREMENT = 'form/DECREMENT'
+export const RESET_INPUT_CALL_DATA = 'form/RESET_INPUT_CALL_DATA'
 
 const initialState = {
     checkInputCall: false,
@@ -18,15 +16,11 @@ const initialState = {
     checkInputFail: null,
     submitFormCall: false,
     submitFormSuccess: null,
-    submitFormFail: null,
-    count: 0,
-    isIncrementing: false,
-    isDecrementing: false
+    submitFormFail: null
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
-
     case CHECK_INPUT_CALL:
         return {
             ...state,
@@ -37,14 +31,14 @@ export default (state = initialState, action) => {
         return {
             ...state,
             checkInputCall: false,
-            checkInputSuccess: true
+            checkInputSuccess: action.data || true
         }
     
     case CHECK_INPUT_FAIL:
         return {
             ...state,
             checkInputCall: false,
-            checkInputFail: true
+            checkInputFail: action.error
         }
     
     case SUBMIT_FORM_CALL:
@@ -66,6 +60,14 @@ export default (state = initialState, action) => {
             submitFormCall: false,
             submitFormFail: true
         }
+    
+    case RESET_INPUT_CALL_DATA:
+        return {
+            ...state,
+            checkInputCall: false,
+            checkInputSuccess: null,
+            checkInputFail: null
+        }
 
     default:
       return state
@@ -75,114 +77,51 @@ export default (state = initialState, action) => {
 
 export const validateInput = (value) => {
     return dispatch => {
-
         dispatch({
             type: CHECK_INPUT_CALL
         })
 
         checkIt(value)
-        .then(() => {
+        .then((response) => {
             dispatch({
-                type: CHECK_INPUT_SUCCESS
+                type: CHECK_INPUT_SUCCESS,
+                data: response
             })
-        }).catch(() => {
+        }).catch((err) => {
             dispatch({
-                type: CHECK_INPUT_FAIL
+                type: CHECK_INPUT_FAIL,
+                error: err
             })
         })
     }
-  }
-  
-
-
-/*
-
-
-
-    case INCREMENT_REQUESTED:
-      return {
-        ...state,
-        isIncrementing: true
-      }
-
-    case INCREMENT:
-      return {
-        ...state,
-        count: state.count + 1,
-        isIncrementing: !state.isIncrementing
-      }
-
-    case DECREMENT_REQUESTED:
-      return {
-        ...state,
-        isDecrementing: true
-      }
-
-    case DECREMENT:
-      return {
-        ...state,
-        count: state.count - 1,
-        isDecrementing: !state.isDecrementing
-      }
-
-
-
-
-export const increment = () => {
-  return dispatch => {
-    dispatch({
-      type: INCREMENT_REQUESTED
-    })
-
-    dispatch({
-      type: INCREMENT
-    })
-  }
 }
 
-export const incrementAsync = () => {
-  return dispatch => {
-    dispatch({
-      type: INCREMENT_REQUESTED
-    })
+export const submitForm = (value) => {
+    return dispatch => {
+        dispatch({
+            type: SUBMIT_FORM_CALL
+        })
 
-    return setTimeout(() => {
-      dispatch({
-        type: INCREMENT
-      })
-    }, 3000)
-  }
+        submitIt(value)
+        .then((response) => {
+            dispatch({
+                type: SUBMIT_FORM_SUCCESS,
+                data: response
+            })
+        }).catch((err) => {
+            dispatch({
+                type: SUBMIT_FORM_FAIL,
+                error: err
+            })
+        })
+    }
 }
 
-export const validateInput = () => {
-  return dispatch => {
-    dispatch({
-      type: DECREMENT_REQUESTED
-    })
-
-    dispatch({
-      type: DECREMENT
-    })
-  }
+export const clearInputValidationData = () => {
+    return {
+        type: RESET_INPUT_CALL_DATA
+    }
 }
-
-export const decrementAsync = () => {
-  return dispatch => {
-    dispatch({
-      type: DECREMENT_REQUESTED
-    })
-
-    return setTimeout(() => {
-      dispatch({
-        type: DECREMENT
-      })
-    }, 3000)
-  }
-}
-
-*/
-
-
 
 
 
