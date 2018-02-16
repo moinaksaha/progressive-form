@@ -123,7 +123,7 @@ export default class Step3 extends Component{
 
 	render = () => {
 
-		const { checkInputCall, checkInputSuccess } = this.props;
+		const { checkInputCall, checkInputSuccess, showRequired } = this.props;
 		// console.log(styles[this.state.validationIconState])
 
 		// console.log(this.state.validationIconState)
@@ -142,7 +142,8 @@ export default class Step3 extends Component{
 			<div className={`${styles.formStep} ${styles.step3}`}
 				 ref="step3">
 
-			  	<StepHeading headingtext={`Step 3: `} />
+			  	<StepHeading headingtext={`Step 3: `} 
+							 showRequired={showRequired}/>
 
 				<div className={`${styles.content} clearfix`}>
 

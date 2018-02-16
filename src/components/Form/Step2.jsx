@@ -20,14 +20,15 @@ export default class Step2 extends Component{
 
 	render = () => {
 
-    const { setToggleValue } = this.props;
+    const { setToggleValue, showRequired } = this.props;
 
 		return (
 
 			<div className={`${styles.formStep} ${styles.step2}`}
            ref="step2">
 
-        <StepHeading headingtext={`Step 2:`} />
+        <StepHeading headingtext={`Step 2:`}
+							   showRequired={showRequired} />
 
         <div className={`${styles.content}`}>
 

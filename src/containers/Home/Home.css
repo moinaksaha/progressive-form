@@ -28,6 +28,14 @@
 	border-bottom: 1px solid $colorSubHeading;
 	font-weight: 300;
 }
+.mainWrapper .mainForm .formStep .heading .requiredMessage{
+	font-size: 13px;
+    color: #ff4646;
+    margin-left: 10px;
+    position: relative;
+    top: 1px;
+    text-transform: none;
+}
 .mainWrapper .mainForm .formStep .content{
 	margin-top: 20px;
 	padding: 0 20px;

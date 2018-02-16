@@ -16,13 +16,14 @@ export default class Step1 extends Component{
 
 	render = () => {
 
-    const { setCheckedValue } = this.props;
+    const { setCheckedValue, showRequired } = this.props;
 
 		return (
 
 			<div className={`${styles.formStep} ${styles.step1}`}>
 
-        <StepHeading headingtext={`Step 1:`} />
+        <StepHeading headingtext={`Step 1:`} 
+                     showRequired={showRequired}/>
 
           <div className={`${styles.content}`}>
 

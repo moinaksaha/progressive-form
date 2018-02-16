@@ -10,11 +10,20 @@ export default class StepHeading extends Component{
 
 	render = () => {
 		
-		const { headingtext } = this.props;
+		const { headingtext, showRequired } = this.props;
 		
 		return (
 
-			<div className={`${styles.heading}`}>{headingtext}</div>
+			<div className={`${styles.heading}`}>
+				<span>{headingtext}</span>	
+				{(showRequired) ? 
+					<span className={`${styles.requiredMessage}`}>
+						* Required Field! Cannot be empty
+					</span> : 
+
+					null
+				}
+			</div>
 
 		);
 	}

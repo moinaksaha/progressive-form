@@ -15,11 +15,11 @@ export default class ProgressiveForm extends Component{
 		super();
 		
 		this.state = {
-			showStep1: true,
-			showStep2: true,
-			showStep3: true,
-			showStep4: true,
-			showSubmitButton: true
+			showStep1: false,
+			showStep2: false,
+			showStep3: false,
+			showStep4: false,
+			showSubmitButton: false
 		}
 	}
 
@@ -90,7 +90,11 @@ export default class ProgressiveForm extends Component{
 				checkInputSuccess, 
 				checkInputCall,
 				clearInputValidationData,
-				submitFormData } = this.props;
+				submitFormData,
+				requiredErrorStep1,
+				requiredErrorStep2,
+				requiredErrorStep3,
+				requiredErrorStep4 } = this.props;
 
 		return (
 
@@ -102,7 +106,8 @@ export default class ProgressiveForm extends Component{
 
 					{(this.state.showStep1)?
 					
-						<Step1 setCheckedValue={setCheckedValue} /> : 
+						<Step1 setCheckedValue={setCheckedValue}
+							   showRequired={requiredErrorStep1} /> : 
 
 						null
 
@@ -110,7 +115,8 @@ export default class ProgressiveForm extends Component{
 
 					{(this.state.showStep2)?
 					
-						<Step2 setToggleValue={setToggleValue} /> : 
+						<Step2 setToggleValue={setToggleValue}
+								showRequired={requiredErrorStep2} /> : 
 
 						null
 
@@ -124,7 +130,8 @@ export default class ProgressiveForm extends Component{
 							   checkInputSuccess={checkInputSuccess}
 							   checkInputCall={checkInputCall}
 							   clearInputValidationData={clearInputValidationData}
-							   checkInputFail={checkInputFail} /> : 
+							   checkInputFail={checkInputFail}
+							   showRequired={requiredErrorStep3} /> : 
 
 						null
 
@@ -132,7 +139,8 @@ export default class ProgressiveForm extends Component{
 
 					{(this.state.showStep4)?
 					
-						<Step4 setSelectValue={setSelectValue} /> : 
+						<Step4 setSelectValue={setSelectValue}
+								showRequired={requiredErrorStep4} /> : 
 
 						null
 
