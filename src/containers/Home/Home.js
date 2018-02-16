@@ -223,6 +223,7 @@ export default class Home extends Component {
         requiredErrorStep4: true
       })
     }
+    this.showErrorMessage({message: "Please check the form inputs and try submitting again"})
   }
 
   unsetFormRequiredError = (stepName) => {
