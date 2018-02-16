@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Fade } from 'react-bootstrap';
 
 import styles from '../../containers/Home/Home.css';
 
@@ -24,7 +25,6 @@ export default class ProgressiveForm extends Component{
 	}
 
 	componentWillReceiveProps = (nextProps) => {
-		// console.log(nextProps)
 		if(nextProps.showCurrentState && this.props.showCurrentState!=nextProps.showCurrentState ){
 			this.handleStepDisplay(nextProps.showCurrentState);
 		}

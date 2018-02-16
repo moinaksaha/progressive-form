@@ -1,6 +1,5 @@
 import { checkIt } from '../utils/api';
 
-
 export const CHECK_INPUT_CALL = 'form/CHECK_INPUT_CALL'
 export const CHECK_INPUT_SUCCESS = 'form/CHECK_INPUT_SUCCESS'
 export const CHECK_INPUT_FAIL = 'form/CHECK_INPUT_FAIL'
