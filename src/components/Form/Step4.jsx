@@ -24,12 +24,15 @@ export default class Step4 extends Component{
 
 	render = () => {
 
+    const { showRequired } = this.props;
+    
 		return (
 
 			<div className={`${styles.formStep} ${styles.step4}`}
            ref="step4">
 
-        <StepHeading headingtext={`Step 4: `} />
+        <StepHeading headingtext={`Step 4: `} 
+							   showRequired={showRequired}/>
 
         <div className={`${styles.content}`}>
 

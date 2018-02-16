@@ -48,7 +48,9 @@ export default class Home extends Component {
       selectValue: null,
       showCurrentState: 'step1', // 'step2', 'step3', 'step4' 'submitButton'
       requiredErrorStep1: false,
-      requiredErrorStep2: false
+      requiredErrorStep2: false,
+      requiredErrorStep3: false,
+      requiredErrorStep4: false
     }
   }
 
@@ -118,6 +120,7 @@ export default class Home extends Component {
   }
  
   setCheckedValue = (value, isChecked) => {
+    this.unsetFormRequiredError('requiredErrorStep1');
     let checkedValueArray = this.state.checkedValue;
     
     if(isChecked){
@@ -139,6 +142,7 @@ export default class Home extends Component {
   }
 
   setToggleValue = (value) => {
+    this.unsetFormRequiredError('requiredErrorStep2'); //Not needed though
     if(value){
       this.setState({
         toggleValue: value
@@ -149,6 +153,7 @@ export default class Home extends Component {
   }
 
   setTextValue = (value) => {
+    this.unsetFormRequiredError('requiredErrorStep3');
     if(value && value!==""){
       this.setState({
         textValue: value
@@ -157,12 +162,14 @@ export default class Home extends Component {
     }
   }
   unSetTextValue = () => {
+    this.unsetFormRequiredError('requiredErrorStep3');
     this.setState({
       textValue: null
     })
   }
 
   setSelectValue = (value) => {
+    this.unsetFormRequiredError('requiredErrorStep4');
     // console.log("Select value:", value);
     if(value !== ""){
       this.setState({
@@ -184,14 +191,44 @@ export default class Home extends Component {
       text: this.state.textValue,
       c: this.state.selectValue
     };
-    // console.log("form data", formData);
+    console.log("form data", formData);
     if(validateForm(formData)){
       const { submitForm } = this.props;
       submitForm(formData);
     }else{
       // Handle form validation error here
-      console.log("Form Data Not Complete")
+      console.log("Form Data Not Complete");
+      this.handleFormError(formData);
     }
+  }
+
+  handleFormError = ({a, b, text, c}) => {
+    if(!a || a.length === 0){
+      this.setState({
+        requiredErrorStep1: true
+      })
+    }
+    if(!b || b.trim() === ""){
+      this.setState({
+        requiredErrorStep2: true
+      })
+    }
+    if(!text || text.trim() === 0){
+      this.setState({
+        requiredErrorStep3: true
+      })
+    }
+    if(!c || c.trim() === 0){
+      this.setState({
+        requiredErrorStep4: true
+      })
+    }
+  }
+
+  unsetFormRequiredError = (stepName) => {
+    this.setState({
+      [stepName]: false
+    })
   }
 
   render() {
@@ -232,7 +269,11 @@ export default class Home extends Component {
                            checkInputCall={checkInputCall}
                            clearInputValidationData={clearInputValidationData}
                            checkInputFail={checkInputFail}
-                           submitFormData={this.submitFormData}/>
+                           submitFormData={this.submitFormData}
+                           requiredErrorStep1={this.state.requiredErrorStep1}
+                           requiredErrorStep2={this.state.requiredErrorStep2}
+                           requiredErrorStep3={this.state.requiredErrorStep3}
+                           requiredErrorStep4={this.state.requiredErrorStep4}/>
                     
         </Col>
 
