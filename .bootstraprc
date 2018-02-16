@@ -56,24 +56,24 @@ styles:
   # Reset and dependencies
   normalize: true
   print: false
-  glyphicons: false
+  glyphicons: true
 
   # Core CSS
   scaffolding: true
   type: true
   code: true
   grid: true
-  tables: true
+  tables: false
   forms: true
   buttons: true
 
   # Components
   component-animations: true
-  dropdowns: true
-  button-groups: true
+  dropdowns: false
+  button-groups: false
   input-groups: true
-  navs: true
-  navbar: true
+  navs: false
+  navbar: false
   breadcrumbs: false
   pagination: false
   pager: false
@@ -82,10 +82,10 @@ styles:
   jumbotron: false
   thumbnails: true
   alerts: true
-  progress-bars: true
-  media: true
+  progress-bars: false
+  media: false
   list-group: true
-  panels: true
+  panels: false
   wells: false
   responsive-embed: true
   close: true
@@ -94,7 +94,7 @@ styles:
   modals: true
   tooltip: false
   popovers: false
-  carousel: true
+  carousel: false
 
   # Utility classes
   utilities: true

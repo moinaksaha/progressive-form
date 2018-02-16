@@ -1,0 +1,57 @@
+@import '../../theme/colors';
+
+.mainLoader .modalDialog{
+	position: absolute;
+    left: 44%;
+    top: 40%;
+    width: auto;
+}
+.mainLoader .modalDialog > div{
+	background: transparent;
+    box-shadow: none;
+    border: none;
+}
+.mainLoader .loadingText{
+    font-size: 16px;
+    color: $colorSubHeading;
+    font-weight: 300;
+    margin-top: 13px;
+    letter-spacing: 1px;
+}
+
+.imageGif{
+	height: 35px;
+	width: 35px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
