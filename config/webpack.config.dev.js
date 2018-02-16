@@ -35,6 +35,8 @@ module.exports = {
   entry: [
     // We ship a few polyfills by default:
     require.resolve('./polyfills'),
+    // Requiring bootstrap loader to load bootstrap CSS
+    require.resolve('bootstrap-loader'),
     // Include an alternative client for WebpackDevServer. A client's job is to
     // connect to WebpackDevServer by a socket and get notified about changes.
     // When you save a file, the client will either apply hot updates (in case
@@ -164,6 +166,8 @@ module.exports = {
                 loader: require.resolve('css-loader'),
                 options: {
                   importLoaders: 1,
+                  modules: true,
+                  localIdentName: "[name]__[local]___[hash:base64:5]"  
                 },
               },
               {
