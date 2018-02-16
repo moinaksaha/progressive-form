@@ -1,0 +1,310 @@
+@import '../../theme/colors.scss';
+
+
+.mainWrapper{
+	min-height: 1000px;
+	background: $colorBG;
+}
+.mainWrapper .mainForm{
+	margin-top: 100px;
+	margin-bottom: 150px;
+	max-width: 500px;
+}
+.mainWrapper .mainForm .formHeading{
+	color: $colorHeading;
+    font-size: 36px;
+    font-weight: 300;
+}
+.mainWrapper .mainForm .formStep{
+	/* border: 1px solid white; */
+	padding: 20px;
+	margin-top: 30px;
+}
+.mainWrapper .mainForm .formStep .heading{
+	color: $colorSubHeading;
+	/* text-decoration: underline; */
+	text-transform: uppercase;
+	line-height: 1.5;
+	border-bottom: 1px solid $colorSubHeading;
+	font-weight: 300;
+}
+.mainWrapper .mainForm .formStep .content{
+	margin-top: 20px;
+	padding: 0 20px;
+}
+.mainWrapper .mainForm .formStep .content .helpText{
+	display: block;
+    color: $colorSubHeading;
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+.mainWrapper .mainForm .formStep .content .textInput{
+	color: $colorHeading;
+	font-size: 22px;
+	width: 100%;
+    padding: 10px 0;
+    background: transparent;
+    border: none;
+	border-bottom: 1px solid $colorSubHeading;
+	height: auto;
+    border-radius: 0;
+    box-shadow: none;
+}
+.mainWrapper .mainForm .formStep .content .textInput:focus{
+	outline: none;
+}
+
+.mainWrapper .mainForm .formStep .content .textInput::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    opacity: 0.2; /* Firefox */
+}
+
+.mainWrapper .mainForm .formStep .content .textInput:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    opacity: 0.2;
+}
+
+.mainWrapper .mainForm .formStep .content .textInput::-ms-input-placeholder { /* Microsoft Edge */
+    opacity: 0.2;
+}
+
+
+.mainWrapper .mainForm .formStep.submit button{
+	background: $colorButtonBG;
+	color: $colorButtonText;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+	position: relative;
+	border: none;
+	padding: 10px 50px;
+    font-size: 15px;
+    font-weight: 300;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+.mainWrapper .mainForm .formStep.submit button:hover {
+	background-color: $colorButtonBG;
+	-webkit-border-radius: 25px;
+	-moz-border-radius: 25px;
+	border-radius: 25px;	
+}
+.mainWrapper .mainForm .formStep.submit button:focus {
+	text-decoration: none;
+	outline: none;
+}
+
+.mainWrapper .mainForm .formStep.step3 .content button{
+	background: $colorButtonBG;
+	color: $colorButtonText;
+	position: relative;
+	border: none;
+	padding: 8px 30px;
+    font-size: 11px;
+    font-weight: 300;
+	text-transform: uppercase;
+	text-decoration: none;
+	margin-top: 10px;
+	width: 125px;
+}
+
+.mainWrapper .mainForm .formStep.step3 .content button:focus{
+	outline: none;
+}
+.mainWrapper .mainForm .formStep.step3 .content button .loader{
+	height: 12px;
+    position: relative;
+    top: -1px;
+    margin-right: 5px;
+}
+.mainWrapper .mainForm .formStep.step4 .content .selectInput:focus{
+	border: none;
+	box-shadow: none;
+}
+
+/* ===================== Error Container ========================= */
+.mainWrapper .errorContainer{
+	padding: 20px;
+	background: $colorErrorBG;
+	opacity: 0.9;
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	color: $colorErrorMessage;
+	max-width: 300px;
+	border-radius: 6px;
+	box-shadow: 4px 4px 7px 0 rgba(0,0,0,.7);
+	z-index: 9;
+	min-width: 250px;
+}
+.mainWrapper .errorContainer .closeButton{
+	position: absolute;
+	top: 5px;
+	right: 13px;
+	font-weight: bold;
+	cursor: pointer;
+	font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+.mainWrapper .errorContainer .heading{
+	font-size: 16px;
+	color: $colorErrorHeading;
+	text-transform: uppercase;
+}
+
+.mainWrapper .errorContainer .content{
+	font-size: 14px;
+	margin-top: 10px;
+	color: $colorErrorMessage;
+}
+
+
+
+
+/* =========================================================================================== */
+
+.switch {
+	display: inline-block;
+	height: 34px;
+	position: relative;
+	width: 60px;
+  }
+
+.switch .customLabelText{
+	position: absolute;
+    left: 70px;
+    width: 300px;
+    font-size: 22px;
+    font-weight: 300;
+    color: white;
+}
+  
+  .switch input {
+	display:none;
+  }
+  
+  .slider {
+	background-color: $colorToggleBG;
+	bottom: 0;
+	cursor: pointer;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	transition: .4s;
+  }
+  
+  .slider:before {
+	background-color: $colorToggleHead;
+	bottom: 4px;
+	content: "";
+	height: 26px;
+	left: 4px;
+	position: absolute;
+	transition: .4s;
+	width: 26px;
+  }
+  
+  .switch input:checked + .slider {
+	background-color: $colorToggleCheckedBG;
+  }
+  
+  .switch input:checked + .slider:before {
+	transform: translateX(26px);
+  }
+  
+  .slider.round {
+	border-radius: 34px;
+  }
+  
+  .slider.round:before {
+	border-radius: 50%;
+  }
+
+/* =========================================================================================== */
+
+
+
+
+/* The container */
+.containerCheckmark {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+	user-select: none;
+	color: $colorInput;
+	font-weight: 300;
+}
+
+/* Hide the browser's default checkbox */
+.containerCheckmark input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: $colorToggleHead;
+}
+
+/* On mouse-over, add a grey background color */
+.containerCheckmark:hover input ~ .checkmark {
+    background-color: $colorToggleBG;
+}
+
+/* When the checkbox is checked, add a blue background */
+.containerCheckmark input:checked ~ .checkmark {
+    background-color: $colorToggleCheckedBG;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.containerCheckmark input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.containerCheckmark .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 7px;
+    height: 12px;
+    border: solid $colorToggleHead;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/* =========================================================================================== */
+
+@media only screen and (max-width : 767px) {
+	.mainWrapper .errorContainer{
+		background: rgba(46, 46, 46, 0.9);
+		width: 100%;
+		left: 0px;
+		bottom: 0px;
+		top: auto;
+		right: auto;
+		max-width: none;
+		border-radius: 0px;
+		box-shadow: none;
+	}
+}

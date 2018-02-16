@@ -68,7 +68,7 @@ export const incrementAsync = () => {
   }
 }
 
-export const decrement = () => {
+export const validateInput = () => {
   return dispatch => {
     dispatch({
       type: DECREMENT_REQUESTED
@@ -93,3 +93,4 @@ export const decrementAsync = () => {
     }, 3000)
   }
 }
+
