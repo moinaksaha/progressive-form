@@ -1,27 +1,35 @@
 import React, { Component } from 'react';
 
-import { Grid, Row, Col, form, FormGroup, Checkbox, Radio, ControlLabel, Button, option, FormControl } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 
 import styles from './Home.css';
 
 import ErrorContainer from '../../components/Home/ErrorContainer';
 import ProgressiveForm from '../../components/Home/ProgressiveForm';
 
+import LoaderModal from '../../components/LoaderModal/LoaderModal';
+
 import { connect } from 'react-redux';
 
 import isEqual from 'lodash.isequal';
 
-import { validateInput } from '../../reducers/form';
+import { validateInput, clearInputValidationData, submitForm } from '../../reducers/form';
+
+import { validateForm } from '../../utils/validations'
 
 @connect((state) => {
   return {
-    testCall: state.form.checkInputCall,
-    testCallSuccess: state.form.checkInputSuccess,
-	  testCallFail: state.form.checkInputFail,
-	  count: state.counter.count
+    checkInputCall: state.form.checkInputCall,
+    checkInputSuccess: state.form.checkInputSuccess,
+    checkInputFail: state.form.checkInputFail,
+    submitFormCall: state.form.submitFormCall,
+    submitFormSuccess: state.form.submitFormSuccess,
+	  submitFormFail: state.form.submitFormFail
   };
  },{
-  validateInput
+  validateInput,
+  clearInputValidationData,
+  submitForm
  })
 
 export default class Home extends Component {
@@ -38,7 +46,9 @@ export default class Home extends Component {
       toggleValue: null,
       textValue: null,
       selectValue: null,
-      showCurrentState: 'step1' // 'step2', 'step3', 'step4' 'submitButton'
+      showCurrentState: 'step1', // 'step2', 'step3', 'step4' 'submitButton'
+      requiredErrorStep1: false,
+      requiredErrorStep2: false
     }
   }
 
@@ -47,17 +57,13 @@ export default class Home extends Component {
   }
 
   componentWillReceiveProps = (nextProps) => {
-    if(nextProps.testCallFail && !(isEqual(nextProps.testCallFail, this.props.testCallFail))){
-      this.showErrorMessage(nextProps.testCallFail);
+    if(nextProps.checkInputFail && !(isEqual(nextProps.checkInputFail, this.props.checkInputFail))){
+      this.showErrorMessage(nextProps.checkInputFail);
     }
   }
 
   componentDidUpdate = () => {
-    console.log("========================")
-    console.log("a: ", this.state.checkedValue);
-    console.log("b: ", this.state.toggleValue);
-    console.log("text: ", this.state.textValue);
-    console.log("c: ", this.state.selectValue);
+    
   }
 
   hideErrorMessage = () => {
@@ -143,7 +149,7 @@ export default class Home extends Component {
   }
 
   setTextValue = (value) => {
-    if(value && value!=""){
+    if(value && value!==""){
       this.setState({
         textValue: value
       })
@@ -170,15 +176,39 @@ export default class Home extends Component {
     }
   }
 
-  render() {
+  submitFormData = () => {
 
-    console.log(styles)
+    const formData = {
+      a: this.state.checkedValue,
+      b: this.state.toggleValue,
+      text: this.state.textValue,
+      c: this.state.selectValue
+    };
+    // console.log("form data", formData);
+    if(validateForm(formData)){
+      const { submitForm } = this.props;
+      submitForm(formData);
+    }else{
+      // Handle form validation error here
+      console.log("Form Data Not Complete")
+    }
+  }
+
+  render() {
     
-    const { validateInput, testCallSuccess, testCall, testCallFail } = this.props;
+    const { validateInput, 
+            checkInputSuccess, 
+            checkInputCall, 
+            checkInputFail, 
+            clearInputValidationData, 
+            submitForm,
+            submitFormCall } = this.props;
 
     return (
 
       <Row className={`${styles.mainWrapper}`}>
+
+        <LoaderModal showState={submitFormCall}/>
 
         <Col xs={12} className="">
 
@@ -198,8 +228,11 @@ export default class Home extends Component {
                            setToggleValue={this.setToggleValue}
                            setTextValue={this.setTextValue}
                            unSetTextValue={this.unSetTextValue}
-                           testCallSuccess={testCallSuccess}
-                           testCall={testCall}/>
+                           checkInputSuccess={checkInputSuccess}
+                           checkInputCall={checkInputCall}
+                           clearInputValidationData={clearInputValidationData}
+                           checkInputFail={checkInputFail}
+                           submitFormData={this.submitFormData}/>
                     
         </Col>
 

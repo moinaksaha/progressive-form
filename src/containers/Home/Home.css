@@ -2,8 +2,8 @@
 
 
 .mainWrapper{
-	min-height: 1000px;
-	background: $colorBG;
+	/* min-height: 1000px; */
+	/* background: $colorBG; */
 }
 .mainWrapper .mainForm{
 	margin-top: 100px;
@@ -51,6 +51,10 @@
     border-radius: 0;
     box-shadow: none;
 }
+.mainWrapper .mainForm .formStep .content input:-webkit-autofill {
+    background-color: red !important;
+}
+/* input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill */
 .mainWrapper .mainForm .formStep .content .textInput:focus{
 	outline: none;
 }
@@ -121,7 +125,27 @@
 	border: none;
 	box-shadow: none;
 }
-
+.mainWrapper .mainForm .formStep.step3 .content .emptyMessage{
+	float: left;
+    color: $colorErrorHeading;
+    font-size: 13px;
+}
+.mainWrapper .mainForm .formStep.step3 .content .inputValidation{
+	font-size: 9px;
+    float: right;
+    margin-top: 5px;
+	font-weight: 500;
+	color: $colorError;
+}
+.mainWrapper .mainForm .formStep.step3 .content .inputValidation.ok{
+	color: $colorSuccess;
+}
+.mainWrapper .mainForm .formStep.step3 .content .inputValidation.alert{
+	color: $colorAlert;
+}
+.mainWrapper .mainForm .formStep.step3 .content .inputValidationIcon{
+	margin-right: 5px;
+}
 /* ===================== Error Container ========================= */
 .mainWrapper .errorContainer{
 	padding: 20px;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Grid, Row, Col, form, FormGroup, Checkbox, Radio, ControlLabel, Button, option, FormControl } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 import styles from '../../containers/Home/Home.css';
 
@@ -16,6 +16,8 @@ export default class SubmitButton extends Component{
 	
 	  
 	handleClick = (event) => {
+		const { submitFormData } = this.props;
+		submitFormData();
 		// event.preventDefault();
 	}
 

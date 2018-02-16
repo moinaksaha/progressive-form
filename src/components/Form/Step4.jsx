@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Grid, Row, Col, form, FormGroup, Checkbox, Radio, ControlLabel, Button, option, FormControl } from 'react-bootstrap';
+import { FormGroup, ControlLabel, option, FormControl } from 'react-bootstrap';
 
 import styles from '../../containers/Home/Home.css';
 
@@ -8,8 +8,8 @@ import StepHeading from './StepHeading';
 
 export default class Step4 extends Component{
 
-	constructor(){
-    	super();
+	constructor(props){
+    	super(props);
   }
 
   componentDidMount = () => {

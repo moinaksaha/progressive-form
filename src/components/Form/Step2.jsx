@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Grid, Row, Col, form, FormGroup, Checkbox, Radio, ControlLabel, Button, option, FormControl } from 'react-bootstrap';
+import { FormGroup, ControlLabel } from 'react-bootstrap';
 
 import styles from '../../containers/Home/Home.css';
 
@@ -10,8 +10,8 @@ import FormToggleButton from '../FormComponents/FormToggleButton';
 
 export default class Step2 extends Component{
 
-	constructor(){
-    	super();
+	constructor(props){
+    	super(props);
   }
 
   componentDidMount = () => {

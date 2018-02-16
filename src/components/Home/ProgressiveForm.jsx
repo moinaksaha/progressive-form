@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Fade } from 'react-bootstrap';
 
 import styles from '../../containers/Home/Home.css';
 
@@ -16,16 +15,16 @@ export default class ProgressiveForm extends Component{
 		super();
 		
 		this.state = {
-			showStep1: false,
-			showStep2: false,
-			showStep3: false,
-			showStep4: false,
-			showSubmitButton: false
+			showStep1: true,
+			showStep2: true,
+			showStep3: true,
+			showStep4: true,
+			showSubmitButton: true
 		}
 	}
 
 	componentWillReceiveProps = (nextProps) => {
-		if(nextProps.showCurrentState && this.props.showCurrentState!=nextProps.showCurrentState ){
+		if(nextProps.showCurrentState && this.props.showCurrentState !== nextProps.showCurrentState ){
 			this.handleStepDisplay(nextProps.showCurrentState);
 		}
 	}
@@ -84,14 +83,14 @@ export default class ProgressiveForm extends Component{
 		const { setCheckedValue, 
 				setSelectValue, 
 				validateInput, 
-				showCurrentState, 
 				setToggleValue, 
 				setTextValue, 
 				unSetTextValue,
-				testCallSuccess, 
-				testCall } = this.props;
-
-		// console.log(showCurrentState)
+				checkInputFail,
+				checkInputSuccess, 
+				checkInputCall,
+				clearInputValidationData,
+				submitFormData } = this.props;
 
 		return (
 
@@ -122,8 +121,10 @@ export default class ProgressiveForm extends Component{
 						<Step3 validateInput={validateInput}
 							   setTextValue={setTextValue}
 							   unSetTextValue={unSetTextValue}
-							   testCallSuccess={testCallSuccess}
-							   testCall={testCall} /> : 
+							   checkInputSuccess={checkInputSuccess}
+							   checkInputCall={checkInputCall}
+							   clearInputValidationData={clearInputValidationData}
+							   checkInputFail={checkInputFail} /> : 
 
 						null
 
@@ -139,7 +140,7 @@ export default class ProgressiveForm extends Component{
 
 					{(this.state.showSubmitButton)?
 					
-						<SubmitButton /> : 
+						<SubmitButton submitFormData={submitFormData}/> : 
 
 						null
 

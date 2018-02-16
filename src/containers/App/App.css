@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700');
+@import '../../theme/colors.scss';
 
 body{
 	font-family: 'Lato', sans-serif;
+	background: $colorBG;
 }
+
+/* .appContainer{
+	background: $colorBG;
+} */
