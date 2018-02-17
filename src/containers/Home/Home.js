@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, ProgressBar } from 'react-bootstrap';
 
 import styles from './Home.css';
 
@@ -50,7 +50,9 @@ export default class Home extends Component {
       requiredErrorStep1: false,
       requiredErrorStep2: false,
       requiredErrorStep3: false,
-      requiredErrorStep4: false
+      requiredErrorStep4: false,
+      stepsCompleted: [],
+      percentageCompleted: null
     }
   }
 
@@ -138,6 +140,13 @@ export default class Home extends Component {
     this.setState({
       checkedValue: checkedValueArray
     })
+
+    if(checkedValueArray.length > 0){
+      this.addStepsCompleted("step1");
+    }else{
+      this.removeStepsCompleted("step1");
+    }
+
     this.showNextStep('step1');
   }
 
@@ -147,6 +156,7 @@ export default class Home extends Component {
       this.setState({
         toggleValue: value
       })
+      this.addStepsCompleted("step2")
       this.showNextStep('step2');
     }
     
@@ -159,13 +169,16 @@ export default class Home extends Component {
         textValue: value
       })
       this.showNextStep('step3');
+      this.addStepsCompleted("step3");
     }
   }
+
   unSetTextValue = () => {
     this.unsetFormRequiredError('requiredErrorStep3');
     this.setState({
       textValue: null
     })
+    this.removeStepsCompleted("step3")
   }
 
   setSelectValue = (value) => {
@@ -176,10 +189,12 @@ export default class Home extends Component {
         selectValue: value
       })
       this.showNextStep('step4');
+      this.addStepsCompleted("step4");
     }else{
       this.setState({
         selectValue: null
       })
+      this.removeStepsCompleted("step4")
     }
   }
 
@@ -203,27 +218,64 @@ export default class Home extends Component {
   }
 
   handleFormError = ({a, b, text, c}) => {
+    let count = 0;
+
     if(!a || a.length === 0){
+      count++;
       this.setState({
         requiredErrorStep1: true
       })
     }
     if(!b || b.trim() === ""){
+      count++;
       this.setState({
         requiredErrorStep2: true
       })
     }
     if(!text || text.trim() === 0){
+      count++;
       this.setState({
         requiredErrorStep3: true
       })
     }
     if(!c || c.trim() === 0){
+      count++;
       this.setState({
         requiredErrorStep4: true
       })
     }
+    this.setProgressBarState(count);
     this.showErrorMessage({message: "Please check the form inputs and try submitting again"})
+  }
+
+  addStepsCompleted = (step) => {
+
+    const index = this.state.stepsCompleted.indexOf(step);
+    if (index === -1) {
+      this.state.stepsCompleted.push(step);
+    }
+    this.setProgressBarState();
+  }
+
+  removeStepsCompleted = (step) => {
+    const index = this.state.stepsCompleted.indexOf(step);
+    if (index > -1) {
+      this.state.stepsCompleted.splice(index, 1);
+    }
+    this.setProgressBarState();
+  }
+
+  setProgressBarState = () => {
+    if(this.state.stepsCompleted.length > 0){
+      const percentage = this.state.stepsCompleted.length * 25;
+      this.setState({
+        percentageCompleted: percentage
+      })
+    }else{
+      this.setState({
+        percentageCompleted: null
+      })
+    }
   }
 
   unsetFormRequiredError = (stepName) => {
@@ -245,6 +297,19 @@ export default class Home extends Component {
     return (
 
       <Row className={`${styles.mainWrapper}`}>
+
+        {(this.state.percentageCompleted) ? 
+        
+          <div className={`${styles.progressBarHolder}`}>
+            <ProgressBar bsStyle="success" 
+                        now={this.state.percentageCompleted} 
+                        label={<span className={`${styles.progressBarText}`}>{this.state.percentageCompleted}%</span>}
+                        className={`${styles.progressBar}`}/>
+          </div> :
+
+          null
+
+        }
 
         <LoaderModal showState={submitFormCall}/>
 

@@ -1,9 +1,27 @@
 @import '../../theme/colors.scss';
 
 
-.mainWrapper{
-	/* min-height: 1000px; */
-	/* background: $colorBG; */
+.mainWrapper .progressBarHolder{
+    border-radius: 0;
+    border: none;
+    position: fixed;
+    width: 100%;
+    top: 0;
+	left: 0;
+	z-index: 5;
+}
+.mainWrapper .progressBarHolder .progressBar{
+	height: 4px; 
+}
+.mainWrapper .progressBarHolder .progressBarText{
+	position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 20px;
+    font-weight: 300;
+    color: $colorSuccess;
+    font-style: italic;
+    opacity: 0.5;
 }
 .mainWrapper .mainForm{
 	margin-top: 100px;
