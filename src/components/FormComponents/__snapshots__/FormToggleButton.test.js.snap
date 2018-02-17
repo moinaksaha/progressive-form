@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form Toggle Component renders correctly 1`] = `
+<div>
+  <label
+    className="undefined"
+    htmlFor={undefined}
+  >
+    <div
+      className="undefined"
+    />
+    <input
+      id={undefined}
+      name={undefined}
+      onChange={[Function]}
+      type="radio"
+      value={undefined}
+    />
+    <div
+      className="undefined undefined"
+    />
+  </label>
+</div>
+`;

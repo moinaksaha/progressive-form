@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form Submitted Successfully Component renders correctly 1`] = `
+<div
+  className="undefined text-center center-block"
+>
+  <div
+    className="undefined"
+  >
+    <span
+      className="undefined glyphicon glyphicon-ok"
+    />
+    <div>
+      Form Submitted Successfully
+    </div>
+  </div>
+  <div
+    className="undefined text-center"
+  >
+    <button
+      className="undefined btn btn-default"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Re Submit Form
+    </button>
+    <div>
+      *Alternatively, you can refresh the page.
+    </div>
+    <div>
+      *We're not saving any data here ;)
+    </div>
+  </div>
+</div>
+`;
