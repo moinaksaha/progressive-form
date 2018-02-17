@@ -99,7 +99,10 @@ export const validateInput = (value) => {
         }).catch((err) => {
             dispatch({
                 type: CHECK_INPUT_FAIL,
-                error: err
+                error: {
+                    error: err,
+                    timeStamp: Date.now()
+                }
             })
         })
     }
@@ -120,7 +123,10 @@ export const submitForm = (value) => {
         }).catch((err) => {
             dispatch({
                 type: SUBMIT_FORM_FAIL,
-                error: err
+                error: {
+                    error: err,
+                    timeStamp: Date.now()
+                }
             })
         })
     }

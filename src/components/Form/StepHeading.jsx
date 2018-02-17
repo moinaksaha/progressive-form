@@ -10,15 +10,25 @@ export default class StepHeading extends Component{
 
 	render = () => {
 		
-		const { headingtext, showRequired } = this.props;
+		const { headingtext, showRequired, showValidationMessage } = this.props;
 		
 		return (
 
 			<div className={`${styles.heading}`}>
 				<span>{headingtext}</span>	
+
 				{(showRequired) ? 
+
 					<span className={`${styles.requiredMessage}`}>
-						* Required Field! Cannot be empty
+
+						{(showValidationMessage && showValidationMessage === "showValidation") ? 
+
+							<span className={`${styles.valid}`}>Please validate this field before submitting form</span> : 
+
+							<span>* Required Field! Cannot be empty</span>
+					
+						}
+						
 					</span> : 
 
 					null
