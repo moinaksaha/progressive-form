@@ -99,7 +99,7 @@ export const validateInput = (value) => {
             type: CHECK_INPUT_CALL
         })
 
-        checkIt(value)
+        return checkIt(value)
         .then((response) => {
             dispatch({
                 type: CHECK_INPUT_SUCCESS,
@@ -127,7 +127,7 @@ export const submitForm = (value) => {
             type: SUBMIT_FORM_CALL
         })
 
-        submitIt(value)
+        return submitIt(value)
         .then((response) => {
             dispatch({
                 type: SUBMIT_FORM_SUCCESS,
