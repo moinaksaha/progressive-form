@@ -9,6 +9,7 @@ export const SUBMIT_FORM_SUCCESS = 'form/SUBMIT_FORM_SUCCESS'
 export const SUBMIT_FORM_FAIL = 'form/SUBMIT_FORM_FAIL'
 
 export const RESET_INPUT_CALL_DATA = 'form/RESET_INPUT_CALL_DATA'
+export const RESET_SUBMIT_FORM_DATA = 'form/RESET_SUBMIT_FORM_DATA'
 
 const initialState = {
     checkInputCall: false,
@@ -38,7 +39,15 @@ export default (state = initialState, action) => {
         return {
             ...state,
             checkInputCall: false,
-            checkInputFail: action.error
+            checkInputFail: action.error || true
+        }
+    
+    case RESET_INPUT_CALL_DATA:
+        return {
+            ...state,
+            checkInputCall: false,
+            checkInputSuccess: null,
+            checkInputFail: null
         }
     
     case SUBMIT_FORM_CALL:
@@ -51,22 +60,22 @@ export default (state = initialState, action) => {
         return {
             ...state,
             submitFormCall: false,
-            submitFormSuccess: true
+            submitFormSuccess: action.data || true
         }
     
     case SUBMIT_FORM_FAIL:
         return {
             ...state,
             submitFormCall: false,
-            submitFormFail: true
+            submitFormFail: action.error || true
         }
-    
-    case RESET_INPUT_CALL_DATA:
+
+    case RESET_SUBMIT_FORM_DATA:
         return {
             ...state,
-            checkInputCall: false,
-            checkInputSuccess: null,
-            checkInputFail: null
+            submitFormCall: false,
+            submitFormSuccess: null,
+            submitFormFail: null
         }
 
     default:
@@ -122,6 +131,13 @@ export const clearInputValidationData = () => {
         type: RESET_INPUT_CALL_DATA
     }
 }
+
+export const resetSubmitFormData = () => {
+    return {
+        type: RESET_SUBMIT_FORM_DATA
+    }
+}
+
 
 
 

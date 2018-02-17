@@ -17,6 +17,7 @@ export function checkIt(value) {
         if (Math.random() < 0.5) {
           resolve(data);
           return;
+          // reject(new Error('BANG! Try again later'));
         }
   
         reject(new Error('BANG! Try again later'));

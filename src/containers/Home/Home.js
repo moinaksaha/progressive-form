@@ -6,6 +6,7 @@ import styles from './Home.css';
 
 import ErrorContainer from '../../components/Home/ErrorContainer';
 import ProgressiveForm from '../../components/Home/ProgressiveForm';
+import Success from '../../components/Home/Success';
 
 import LoaderModal from '../../components/LoaderModal/LoaderModal';
 
@@ -13,7 +14,10 @@ import { connect } from 'react-redux';
 
 import isEqual from 'lodash.isequal';
 
-import { validateInput, clearInputValidationData, submitForm } from '../../reducers/form';
+import { validateInput, 
+         clearInputValidationData, 
+         submitForm,
+         resetSubmitFormData } from '../../reducers/form';
 
 import { validateForm } from '../../utils/validations'
 
@@ -29,7 +33,8 @@ import { validateForm } from '../../utils/validations'
  },{
   validateInput,
   clearInputValidationData,
-  submitForm
+  submitForm,
+  resetSubmitFormData
  })
 
 export default class Home extends Component {
@@ -64,6 +69,9 @@ export default class Home extends Component {
     if(nextProps.checkInputFail && !(isEqual(nextProps.checkInputFail, this.props.checkInputFail))){
       this.showErrorMessage(nextProps.checkInputFail);
     }
+    if(nextProps.submitFormFail && !(isEqual(nextProps.submitFormFail, this.props.submitFormFail))){
+      this.showErrorMessage(nextProps.submitFormFail, "submitForm");
+    }
   }
 
   componentDidUpdate = () => {
@@ -77,17 +85,22 @@ export default class Home extends Component {
     })
   }
 
-  showErrorMessage = (err) => {
+  showErrorMessage = (err, origin) => {
+    console.log(err)
     this.setState({
       showError: true,
-      errorMessage: err.message
+      errorMessage: err.message || "Something went wrong. Please try again."
     })
     setTimeout(() => {
       this.setState({
         showError: false,
         errorMessage: "Something went wrong"
-      })
-    }, 3000)
+      });
+      if(origin && origin === "submitForm"){
+        const { resetSubmitFormData } = this.props;
+        resetSubmitFormData();
+      }
+    }, 2000)
   }
 
   showNextStep = (currentStep) => {
@@ -284,6 +297,30 @@ export default class Home extends Component {
     })
   }
 
+  resetFormData = () => {
+
+    this.setState({
+      showError: false,
+      errorMessage: "Something went wrong",
+      checkedValue: [],
+      toggleValue: null,
+      textValue: null,
+      selectValue: null,
+      showCurrentState: 'step1', // 'step2', 'step3', 'step4' 'submitButton'
+      requiredErrorStep1: false,
+      requiredErrorStep2: false,
+      requiredErrorStep3: false,
+      requiredErrorStep4: false,
+      stepsCompleted: [],
+      percentageCompleted: null
+    })
+
+    const { resetSubmitFormData, clearInputValidationData } =  this.props;
+    clearInputValidationData();
+    resetSubmitFormData();
+
+  }
+
   render() {
     
     const { validateInput, 
@@ -292,13 +329,17 @@ export default class Home extends Component {
             checkInputFail, 
             clearInputValidationData, 
             submitForm,
-            submitFormCall } = this.props;
+            submitFormCall,
+            submitFormSuccess,
+            submitFormFail } = this.props;
+
+    // let submitFormSuccess = true;
 
     return (
 
       <Row className={`${styles.mainWrapper}`}>
 
-        {(this.state.percentageCompleted) ? 
+        {(this.state.percentageCompleted && !submitFormSuccess) ? 
         
           <div className={`${styles.progressBarHolder}`}>
             <ProgressBar bsStyle="success" 
@@ -324,22 +365,29 @@ export default class Home extends Component {
 
           }
 
-          <ProgressiveForm setCheckedValue={this.setCheckedValue}
-                           setSelectValue={this.setSelectValue}
-                           validateInput={validateInput}
-                           showCurrentState={this.state.showCurrentState}
-                           setToggleValue={this.setToggleValue}
-                           setTextValue={this.setTextValue}
-                           unSetTextValue={this.unSetTextValue}
-                           checkInputSuccess={checkInputSuccess}
-                           checkInputCall={checkInputCall}
-                           clearInputValidationData={clearInputValidationData}
-                           checkInputFail={checkInputFail}
-                           submitFormData={this.submitFormData}
-                           requiredErrorStep1={this.state.requiredErrorStep1}
-                           requiredErrorStep2={this.state.requiredErrorStep2}
-                           requiredErrorStep3={this.state.requiredErrorStep3}
-                           requiredErrorStep4={this.state.requiredErrorStep4}/>
+          {(submitFormSuccess) ? 
+
+            <Success resetFormData={this.resetFormData}/> :
+          
+            <ProgressiveForm setCheckedValue={this.setCheckedValue}
+                              setSelectValue={this.setSelectValue}
+                              validateInput={validateInput}
+                              showCurrentState={this.state.showCurrentState}
+                              setToggleValue={this.setToggleValue}
+                              setTextValue={this.setTextValue}
+                              unSetTextValue={this.unSetTextValue}
+                              checkInputSuccess={checkInputSuccess}
+                              checkInputCall={checkInputCall}
+                              clearInputValidationData={clearInputValidationData}
+                              checkInputFail={checkInputFail}
+                              submitFormData={this.submitFormData}
+                              submitFormFail={submitFormFail}
+                              requiredErrorStep1={this.state.requiredErrorStep1}
+                              requiredErrorStep2={this.state.requiredErrorStep2}
+                              requiredErrorStep3={this.state.requiredErrorStep3}
+                              requiredErrorStep4={this.state.requiredErrorStep4}/>
+
+          }
                     
         </Col>
 

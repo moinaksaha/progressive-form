@@ -23,6 +23,10 @@ export default class SubmitButton extends Component{
 
 	render = () => {
 
+		const { submitFormFail } = this.props;
+
+		const isDisabled = (submitFormFail) ? true : false;
+
 		return (
 
 			<div className={`${styles.formStep} ${styles.submit} text-center`}
@@ -30,7 +34,8 @@ export default class SubmitButton extends Component{
 
 				  <Button type="button" 
 				  		  className={`${styles.submitButton}`}
-						  onClick={this.handleClick}>Submit</Button>
+						  onClick={this.handleClick}
+						  disabled={isDisabled}>Submit</Button>
 
             </div>
 

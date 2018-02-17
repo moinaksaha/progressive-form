@@ -11,7 +11,11 @@
 	z-index: 5;
 }
 .mainWrapper .progressBarHolder .progressBar{
-	height: 4px; 
+	height: 4px;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+    background-color: transparent;
 }
 .mainWrapper .progressBarHolder .progressBarText{
 	position: absolute;
@@ -208,6 +212,50 @@
 }
 
 
+/* ====================================== Success Container===================================================== */
+.mainWrapper .successContainer{
+	padding: 20px;
+	/* background: $colorErrorBG; */
+	opacity: 0.9;
+	/* position: fixed; */
+	/* top: 20px; */
+	/* right: 20px; */
+	border: 1px solid $colorErrorMessage;
+	max-width: 500px;
+	border-radius: 6px;
+	/* box-shadow: 4px 4px 7px 0 rgba(0,0,0,.7); */
+	z-index: 9;
+	margin-top: 200px;
+}
+
+.mainWrapper .successContainer .heading{
+	color: $colorSuccess;
+	font-size: 18px;
+	text-transform: uppercase;
+	font-weight: 300;
+}
+.mainWrapper .successContainer .content{
+	margin-top: 20px;
+	color: $colorErrorMessage;
+	font-size: 14px;
+	font-weight: 300;
+}
+.mainWrapper .successContainer .content button{
+	background: $colorButtonBG;
+	color: $colorButtonText;
+	/* position: relative; */
+	border: none;
+	padding: 8px 30px;
+    font-size: 16px;
+    font-weight: 300;
+	text-transform: uppercase;
+	text-decoration: none;
+	margin-bottom: 10px;
+	min-width: 125px;
+}
+.mainWrapper .successContainer .content button:focus{
+	outline: none;
+}
 
 
 /* =========================================================================================== */
