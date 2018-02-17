@@ -58,6 +58,9 @@
     top: 1px;
     text-transform: none;
 }
+.mainWrapper .mainForm .formStep .heading .requiredMessage .valid{
+	color: $colorAlert;
+}
 .mainWrapper .mainForm .formStep .content{
 	margin-top: 20px;
 	padding: 0 20px;

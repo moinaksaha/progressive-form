@@ -67,10 +67,10 @@ export default class Home extends Component {
 
   componentWillReceiveProps = (nextProps) => {
     if(nextProps.checkInputFail && !(isEqual(nextProps.checkInputFail, this.props.checkInputFail))){
-      this.showErrorMessage(nextProps.checkInputFail);
+      this.showErrorMessage(nextProps.checkInputFail.error);
     }
     if(nextProps.submitFormFail && !(isEqual(nextProps.submitFormFail, this.props.submitFormFail))){
-      this.showErrorMessage(nextProps.submitFormFail, "submitForm");
+      this.showErrorMessage(nextProps.submitFormFail.error, "submitForm");
     }
   }
 
@@ -100,7 +100,7 @@ export default class Home extends Component {
         const { resetSubmitFormData } = this.props;
         resetSubmitFormData();
       }
-    }, 2000)
+    }, 3000)
   }
 
   showNextStep = (currentStep) => {

@@ -135,6 +135,17 @@ export default class Step3 extends Component{
 			display: (this.state.isEmpty) ? `block` : `none`
 		}
 
+		let showValidationMessage = null;
+
+		if(showRequired){
+			console.log(this.state.value)
+			if(this.state.value !== ""){
+				showValidationMessage = "showValidation";
+			}
+		}
+
+		
+
 		// console.log(isEmptyStyle)
 
 		return (
@@ -143,7 +154,8 @@ export default class Step3 extends Component{
 				 ref="step3">
 
 			  	<StepHeading headingtext={`Step 3: `} 
-							 showRequired={showRequired}/>
+							 showRequired={showRequired}
+							 showValidationMessage={showValidationMessage}/>
 
 				<div className={`${styles.content} clearfix`}>
 
@@ -183,7 +195,8 @@ export default class Step3 extends Component{
 
 					<Button type="button" 
 							className={`${styles.checkButton} pull-right`}
-							onClick={this.validateInputData}>
+							onClick={this.validateInputData}
+							disabled={checkInputCall}>
 
 						{(checkInputCall) ? 
 
