@@ -1,11 +1,24 @@
+/*
+	=========================================================
+	COMPONENT NAME: Step2
+  FUNCTION: Returns the SECOND STEP of the component of the form
+  PROPS:  setToggleValue -> method to set the value of the current selection
+          showRequired -> whether to show the field is required error message
+	=========================================================
+*/
+
 import React, { Component } from 'react';
 
+// React-Bootstrap imports
 import { FormGroup, ControlLabel } from 'react-bootstrap';
 
+// Import styles from the 'Home.css' file in the Home container
 import styles from '../../containers/Home/Home.css';
 
+// Import StepHeading component from this directory
 import StepHeading from './StepHeading';
 
+// Import FormToggleButton component from FormComponents directory
 import FormToggleButton from '../FormComponents/FormToggleButton';
 
 export default class Step2 extends Component{
@@ -15,6 +28,7 @@ export default class Step2 extends Component{
   }
 
   componentDidMount = () => {
+    // Scroll component into view on first render
     this.refs.step2.scrollIntoView({behavior: 'smooth'});
   }
 
@@ -28,7 +42,7 @@ export default class Step2 extends Component{
            ref="step2">
 
         <StepHeading headingtext={`Step 2:`}
-							   showRequired={showRequired} />
+							       showRequired={showRequired} />
 
         <div className={`${styles.content}`}>
 
@@ -37,6 +51,7 @@ export default class Step2 extends Component{
             <ControlLabel className={`${styles.helpText}`}>Please toggle a switch</ControlLabel>
 
             <div>
+
               <FormToggleButton toggleID={`radio1`}
                                 toggleName={`progressiveFormToggle`}
                                 togglevalue={`B1`}
@@ -44,6 +59,7 @@ export default class Step2 extends Component{
                                 setToggleValue={setToggleValue} />
 
             </div>
+
             <div>
 
               <FormToggleButton toggleID={`radio2`}

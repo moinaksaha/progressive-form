@@ -1,16 +1,17 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+/*
+	=========================================================
+	CONTAINER NAME: App
+	FUNCTION: Returns the App container
+	=========================================================
+*/
 
+import React, { Component } from 'react';
+
+// React-Bootstrap imports
 import { Grid } from 'react-bootstrap';
 
+// Import style from the App.css file
 import styles from './App.css';
-
-
-// @connect((state) => {
-//   return {
-//   };
-//  },{
-// })
 
 export default class App extends Component {
   constructor(props) {
@@ -18,10 +19,6 @@ export default class App extends Component {
      * This is for illustration purpose. Since this is empty. It can be removed
     */
     super(props);
-  }
-
-  componentWillMount = () => {
-
   }
 
   render() {
@@ -43,4 +40,5 @@ export default class App extends Component {
 }
 
 App.propTypes = {
+  
 };

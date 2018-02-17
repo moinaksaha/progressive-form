@@ -15,10 +15,8 @@ export function checkIt(value) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (Math.random() < 0.5) {
-          console.log("i am sending true")
           resolve(data);
           return;
-          // reject(new Error('BANG! Try again later'));
         }
   
         reject(new Error('BANG! Try again later'));

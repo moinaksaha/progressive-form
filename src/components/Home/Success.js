@@ -1,7 +1,17 @@
+/*
+	=========================================================
+	COMPONENT NAME: Success
+	FUNCTION: Returns the successfully submitted component of the page
+	PROPS:  resetFormData -> method to reset the form data in the store
+	=========================================================
+*/
+
 import React, { Component } from 'react';
 
+// React-Bootstrap imports
 import { Button, Glyphicon } from 'react-bootstrap';
 
+// Import styles from the 'Home.css' file in the Home container
 import styles from '../../containers/Home/Home.css'
 
 export default class Success extends Component{
@@ -9,7 +19,10 @@ export default class Success extends Component{
 	constructor(){
     	super();
     }
-      
+    
+    /*
+		Function to reset the submit form state in the store
+	*/
     resetForm = () => {
         console.log("happy resetting form");
         const { resetFormData } = this.props;
@@ -29,8 +42,6 @@ export default class Success extends Component{
 
                         <div>Form Submitted Successfully</div>
 
-                        
-                    
                     </div>
 
                     <div className={`${styles.content} text-center`}>
@@ -44,13 +55,17 @@ export default class Success extends Component{
                         </Button>
 
                         <div>*Alternatively, you can refresh the page.</div>
+
                         <div>*We're not saving any data here ;)</div>
                     
                     </div>
 
                 </div>
-		);
-	}
+
+        );
+        
+    }
+    
 };
 
 Success.defaultProps = {
