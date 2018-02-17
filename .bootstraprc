@@ -82,7 +82,7 @@ styles:
   jumbotron: false
   thumbnails: true
   alerts: true
-  progress-bars: false
+  progress-bars: true
   media: false
   list-group: true
   panels: false
