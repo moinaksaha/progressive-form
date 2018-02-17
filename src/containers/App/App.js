@@ -7,8 +7,6 @@
 
 import React, { Component } from 'react';
 
-import { connect } from 'react-redux';
-
 // React-Bootstrap imports
 import { Grid } from 'react-bootstrap';
 
