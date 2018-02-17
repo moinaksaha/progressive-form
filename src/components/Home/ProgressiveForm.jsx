@@ -94,7 +94,8 @@ export default class ProgressiveForm extends Component{
 				requiredErrorStep1,
 				requiredErrorStep2,
 				requiredErrorStep3,
-				requiredErrorStep4 } = this.props;
+				requiredErrorStep4,
+				submitFormFail } = this.props;
 
 		return (
 
@@ -148,7 +149,8 @@ export default class ProgressiveForm extends Component{
 
 					{(this.state.showSubmitButton)?
 					
-						<SubmitButton submitFormData={submitFormData}/> : 
+						<SubmitButton submitFormData={submitFormData}
+									  submitFormFail={submitFormFail}/> : 
 
 						null
 
