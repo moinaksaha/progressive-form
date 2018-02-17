@@ -1,5 +1,16 @@
+/*
+	=========================================================
+	COMPONENT NAME: StepHeading
+	FUNCTION: Returns the StepHeading component for each step of the form
+	PROPS:  headingtext -> text to be rendered as the heading
+			showValidationMessage -> handle to show 'validation' error message or 'Required field' error message 
+			showRequired -> whether to show the field is required error message
+	=========================================================
+*/
+
 import React, { Component } from 'react';
 
+// Import styles from the 'Home.css' file in the Home container
 import styles from '../../containers/Home/Home.css';
 
 export default class StepHeading extends Component{
@@ -15,6 +26,7 @@ export default class StepHeading extends Component{
 		return (
 
 			<div className={`${styles.heading}`}>
+
 				<span>{headingtext}</span>	
 
 				{(showRequired) ? 
@@ -33,6 +45,7 @@ export default class StepHeading extends Component{
 
 					null
 				}
+
 			</div>
 
 		);

@@ -1,9 +1,21 @@
+/*
+	=========================================================
+	COMPONENT NAME: Step4
+	FUNCTION: Returns the FOURTH STEP of the component of the form
+	PROPS:  setSelectValue -> Method to set the value of the current selection on the state of the Home container. 
+			    showRequired -> whether to show the field is required error message
+	=========================================================
+*/
+
 import React, { Component } from 'react';
 
+// React-Bootstrap imports
 import { FormGroup, ControlLabel, option, FormControl } from 'react-bootstrap';
 
+// Import styles from the 'Home.css' file in the Home container
 import styles from '../../containers/Home/Home.css';
 
+// Import StepHeading component from this directory
 import StepHeading from './StepHeading';
 
 export default class Step4 extends Component{
@@ -13,10 +25,13 @@ export default class Step4 extends Component{
   }
 
   componentDidMount = () => {
+    // Scroll the component into view when loaded in the DOM for the first time
     this.refs.step4.scrollIntoView({behavior: 'smooth'});
   }
 
-
+  /*
+		FUNCTION to handle change event on the select dropdown
+	*/
   handleChange = (event) => {
     const { setSelectValue } = this.props;
     setSelectValue(event.target.value);
@@ -32,7 +47,7 @@ export default class Step4 extends Component{
            ref="step4">
 
         <StepHeading headingtext={`Step 4: `} 
-							   showRequired={showRequired}/>
+							       showRequired={showRequired}/>
 
         <div className={`${styles.content}`}>
 

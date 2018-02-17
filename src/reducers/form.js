@@ -1,3 +1,8 @@
+/*
+    Reducer for the function promises
+*/
+
+// Import the checkIt and submitIt functions from the given helper function 'api.js'
 import { checkIt, submitIt } from '../utils/api';
 
 export const CHECK_INPUT_CALL = 'form/CHECK_INPUT_CALL'
@@ -11,13 +16,14 @@ export const SUBMIT_FORM_FAIL = 'form/SUBMIT_FORM_FAIL'
 export const RESET_INPUT_CALL_DATA = 'form/RESET_INPUT_CALL_DATA'
 export const RESET_SUBMIT_FORM_DATA = 'form/RESET_SUBMIT_FORM_DATA'
 
+//Initial state of the reducer
 const initialState = {
-    checkInputCall: false,
-    checkInputSuccess: null,
-    checkInputFail: null,
-    submitFormCall: false,
-    submitFormSuccess: null,
-    submitFormFail: null
+    checkInputCall: false, //Key to store the Fetching state of the input validation promise; true -> promise is still fetching
+    checkInputSuccess: null, //Key to store the Success Response of the input validation promise
+    checkInputFail: null, //Key to store the Error Response of the input validation promise
+    submitFormCall: false, //Key to store the Fetching state of the form submit promise; true -> promise is still fetching
+    submitFormSuccess: null, //Key to store the Success Response of the form submit promise
+    submitFormFail: null //Key to store the Error Response of the form submit promise
 }
 
 export default (state = initialState, action) => {
@@ -83,7 +89,10 @@ export default (state = initialState, action) => {
   }
 }
 
-
+/*
+        Function to do the 'checkIt' call with the input value and appropriately handle the response
+        - added timeStamp to error response to make every response unique and accordingly handle them
+*/
 export const validateInput = (value) => {
     return dispatch => {
         dispatch({
@@ -108,6 +117,10 @@ export const validateInput = (value) => {
     }
 }
 
+/*
+        Function to do the 'submitIt' call with the form data and appropriately handle the response
+        - added timeStamp to error response to make every response unique and accordingly handle them
+*/
 export const submitForm = (value) => {
     return dispatch => {
         dispatch({
@@ -132,12 +145,18 @@ export const submitForm = (value) => {
     }
 }
 
+/*
+    Function to clear the input validation state before re-validating input text again
+*/
 export const clearInputValidationData = () => {
     return {
         type: RESET_INPUT_CALL_DATA
     }
 }
 
+/*
+    Function to clear the submit form state before re-submitting form again
+*/
 export const resetSubmitFormData = () => {
     return {
         type: RESET_SUBMIT_FORM_DATA
