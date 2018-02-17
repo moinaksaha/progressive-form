@@ -1,7 +1,18 @@
+/*
+	=========================================================
+	COMPONENT NAME: FormToggleButton
+	FUNCTION: Returns the radio button element used in Step2 of the Form
+	PROPS:  toggleID -> 'id' of the radio button element
+			setToggleValue -> method to set the current checked value of the radio button on the parent 
+			labelText -> label to display with the radio button element
+			toggleName ->	name for the radio button element
+			togglevalue -> value of the radio button element
+	=========================================================
+*/
+
 import React, { Component } from 'react';
 
-// import { FormGroup, Radio, ControlLabel } from 'react-bootstrap'
-
+// Import styles from the 'Home.css' file in the Home container
 import styles from '../../containers/Home/Home.css';
 
 export default class FormToggleButton extends Component{
@@ -9,7 +20,10 @@ export default class FormToggleButton extends Component{
 	constructor(){
     	super();
 	}
-	  
+	
+	/*
+		FUNCTION to handle change event on the radio button
+	*/
 	handleChange = (event) => {
 		const { togglevalue, setToggleValue } = this.props;
 		setToggleValue(togglevalue);

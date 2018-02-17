@@ -1,7 +1,20 @@
+/*
+	=========================================================
+	COMPONENT NAME: ProgressiveForm
+	FUNCTION: Returns the actual Form component of the page
+	PROPS:  checkBoxID -> 'id' of the checkbox element
+			setCheckedValue -> method to set the current checked value of the checkbox on the parent 
+			labelText -> label to display with the checkbox
+			checkBoxName ->	name for the checkbox
+	=========================================================
+*/
+
 import React, { Component } from 'react';
 
+// Import styles from the 'Home.css' file in the Home container
 import styles from '../../containers/Home/Home.css';
 
+// Import heading, steps, and submit button components to be used in this form
 import FormHeading from '../Form/FormHeading';
 import Step1 from '../Form/Step1';
 import Step2 from '../Form/Step2';
@@ -14,29 +27,39 @@ export default class ProgressiveForm extends Component{
 	constructor(){
 		super();
 		
+		/*
+			initial state of the component
+		*/
 		this.state = {
-			showStep1: false,
-			showStep2: false,
-			showStep3: false,
-			showStep4: false,
-			showSubmitButton: false
+			showStep1: false, //handle to show the step1 or not
+			showStep2: false, //handle to show the step2 or not
+			showStep3: false, //handle to show the step3 or not
+			showStep4: false, //handle to show the step4 or not
+			showSubmitButton: false // handle to show the submit button or not
 		}
 	}
 
+	/*
+		'componentWillReceiveProps' LifeCycle method of React
+		USE: handles which steps to display on recieving the prop 'showCurrentState'
+	*/
 	componentWillReceiveProps = (nextProps) => {
 		if(nextProps.showCurrentState && this.props.showCurrentState !== nextProps.showCurrentState ){
 			this.handleStepDisplay(nextProps.showCurrentState);
 		}
 	}
 
-	componentDidUpdate = (prevProps, prevState) => {
-		
-	}
-
+	/*
+		'componentDidMount' LifeCycle method of React
+		USE: handles the default rendering state for the app on first render
+	*/
 	componentDidMount = () => {
 		this.handleStepDisplay();
 	}
 
+	/*
+		FUNCTION to handle which step to display on completion of a step 
+	*/
 	handleStepDisplay = (section) => {
 		switch(section){
 			case 'step1':
@@ -80,6 +103,9 @@ export default class ProgressiveForm extends Component{
 
 	render = () => {
 
+		/*
+			The props of this component
+		*/
 		const { setCheckedValue, 
 				setSelectValue, 
 				validateInput, 

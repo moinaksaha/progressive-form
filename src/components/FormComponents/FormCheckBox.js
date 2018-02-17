@@ -1,5 +1,17 @@
+/*
+	=========================================================
+	COMPONENT NAME: FormCheckBox
+	FUNCTION: Returns the checkbox element used in Step2 of the Form
+	PROPS:  checkBoxID -> 'id' of the checkbox element
+			setCheckedValue -> method to set the current checked value of the checkbox on the parent 
+			labelText -> label to display with the checkbox
+			checkBoxName ->	name for the checkbox
+	=========================================================
+*/
+
 import React, { Component } from 'react';
 
+// Import styles from the 'Home.css' file in the Home container
 import styles from '../../containers/Home/Home.css';
 
 export default class FormCheckBox extends Component{
@@ -7,11 +19,13 @@ export default class FormCheckBox extends Component{
 	constructor(){
     	super();
 	}
-	  
-	handleChange = (event) => {
-		const { setCheckedValue, labelText } = this.props;
 
-		// console.log(event, event.target.checked)
+	/*
+		FUNCTION to handle change event on the checkbox
+	*/
+	handleChange = (event) => {
+
+		const { setCheckedValue, labelText } = this.props;
 
 		setCheckedValue(labelText, event.target.checked);
 
