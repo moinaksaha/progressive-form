@@ -8,7 +8,6 @@ clone from this repository
 
 cd progressive-form
 yarn install
-yarn build
 yarn start
 
 ```
