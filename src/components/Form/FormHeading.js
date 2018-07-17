@@ -12,9 +12,9 @@ import styles from '../../containers/Home/Home.css';
 
 export default class FormHeading extends Component{
 
-	constructor(){
-    	super();
-  	}
+	// constructor(){
+    // 	super();
+  	// }
 
 	render = () => {
 

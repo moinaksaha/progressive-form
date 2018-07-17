@@ -20,9 +20,9 @@ import StepHeading from './StepHeading';
 
 export default class Step4 extends Component{
 
-	constructor(props){
-    	super(props);
-  }
+	// constructor(props){
+  //   	super(props);
+  // }
 
   componentDidMount = () => {
     // Scroll the component into view when loaded in the DOM for the first time

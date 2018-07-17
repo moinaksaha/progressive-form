@@ -17,9 +17,9 @@ import styles from '../../containers/Home/Home.css';
 
 export default class SubmitButton extends Component{
 
-	constructor(){
-    	super();
-	}
+	// constructor(){
+    // 	super();
+	// }
 
 	componentDidMount = () => {
 		// Scroll the component into view when loaded in the DOM for the first time

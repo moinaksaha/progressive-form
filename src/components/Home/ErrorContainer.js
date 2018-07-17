@@ -14,9 +14,9 @@ import styles from '../../containers/Home/Home.css';
 
 export default class ErrorContainer extends Component{
 
-	constructor(){
-    	super();
-	}
+	// constructor(){
+    // 	super();
+	// }
 	
 	/*
 		FUNCTION to dismiss the message box on click of close icon

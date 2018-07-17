@@ -19,9 +19,9 @@ let loaderImage = require('../../images/loadingInProgress.gif');
 
 export default class LoaderModal extends Component {
 
-  constructor() {
-    super();
-  }
+  // constructor() {
+  //   super();
+  // }
 
   render = () => {
 

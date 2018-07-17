@@ -23,9 +23,9 @@ import FormToggleButton from '../FormComponents/FormToggleButton';
 
 export default class Step2 extends Component{
 
-	constructor(props){
-    	super(props);
-  }
+	// constructor(props){
+  //   	super(props);
+  // }
 
   componentDidMount = () => {
     // Scroll component into view on first render

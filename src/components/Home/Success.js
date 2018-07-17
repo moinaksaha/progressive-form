@@ -16,9 +16,9 @@ import styles from '../../containers/Home/Home.css'
 
 export default class Success extends Component{
 
-	constructor(){
-    	super();
-    }
+	// constructor(){
+    // 	super();
+    // }
     
     /*
 		Function to reset the submit form state in the store

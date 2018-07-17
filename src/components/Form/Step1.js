@@ -22,9 +22,9 @@ import FormCheckBox from '../FormComponents/FormCheckBox';
 
 export default class Step1 extends Component{
 
-	constructor(){
-    	super();
-  	}
+	// constructor(){
+  //   	super();
+  // 	}
 
 	render = () => {
 

@@ -55,10 +55,9 @@ import { validateForm } from '../../utils/validations'
  })
 
 export default class Home extends Component {
+
   constructor(props) {
     super(props);
-    
-    
     /**
      * The initial state of the home page
     */
@@ -318,7 +317,10 @@ export default class Home extends Component {
   addStepsCompleted = (step) => {
     const index = this.state.stepsCompleted.indexOf(step);
     if (index === -1) {
-      this.state.stepsCompleted.push(step);
+      this.setState(prevState => ({
+        arrayvar: [...prevState.stepsCompleted, step]
+      }))
+      // this.state.stepsCompleted.push(step);
     }
     this.setProgressBarState();
   }
@@ -467,3 +469,7 @@ export default class Home extends Component {
 Home.propTypes = {
 
 };
+
+
+
+

@@ -15,9 +15,9 @@ import styles from '../../containers/Home/Home.css';
 
 export default class StepHeading extends Component{
 
-	constructor(){
-    	super();
-  	}
+	// constructor(){
+    // 	super();
+  	// }
 
 	render = () => {
 		

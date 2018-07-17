@@ -17,9 +17,9 @@ import styles from '../../containers/Home/Home.css';
 
 export default class FormToggleButton extends Component{
 
-	constructor(){
-    	super();
-	}
+	// constructor(){
+    // 	super();
+	// }
 	
 	/*
 		FUNCTION to handle change event on the radio button
