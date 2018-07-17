@@ -1,10 +1,11 @@
 @import '../../theme/colors';
 
 .mainLoader .modalDialog{
-	position: absolute;
+	/* position: absolute;
     left: 44%;
     top: 40%;
-    width: auto;
+    width: auto; */
+    margin-top: 45vh;
 }
 .mainLoader .modalDialog > div{
 	background: transparent;

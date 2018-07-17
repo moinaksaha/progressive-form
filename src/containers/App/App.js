@@ -11,7 +11,8 @@ import React, { Component } from 'react';
 import { Grid } from 'react-bootstrap';
 
 // Import style from the App.css file
-import styles from './App.css';
+// import styles from './App.css';
+import './App.css';
 
 export default class App extends Component {
   // constructor(props) {

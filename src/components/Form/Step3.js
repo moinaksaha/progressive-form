@@ -167,9 +167,9 @@ export default class Step3 extends Component{
 
 	render = () => {
 
-		const { checkInputCall, checkInputSuccess, showRequired } = this.props;
+		const { checkInputCall, showRequired } = this.props;
 
-		let isInputValidated = ((this.state.value !== "") && (checkInputSuccess)) ? true: false;
+		// let isInputValidated = ((this.state.value !== "") && (checkInputSuccess)) ? true: false;
 
 		//INLINE styling to show or hide the icon
 		const isEmptyStyle = {

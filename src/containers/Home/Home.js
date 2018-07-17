@@ -394,8 +394,7 @@ export default class Home extends Component {
             checkInputSuccess, 
             checkInputCall, 
             checkInputFail, 
-            clearInputValidationData, 
-            submitForm,
+            clearInputValidationData,
             submitFormCall,
             submitFormSuccess,
             submitFormFail } = this.props;
